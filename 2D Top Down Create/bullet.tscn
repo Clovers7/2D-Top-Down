@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dw2sa7gc5k7p5"]
+[gd_scene load_steps=4 format=3 uid="uid://dw2sa7gc5k7p5"]
 
 [ext_resource type="Texture2D" uid="uid://ceag4ufh1lntp" path="res://bullet1.png" id="1_am4o1"]
 [ext_resource type="Script" path="res://bullet.gd" id="1_s8ra5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5nkdi"]
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_s8ra5")
@@ -12,3 +14,8 @@ texture = ExtResource("1_am4o1")
 
 [node name="KillTimer" type="Timer" parent="."]
 wait_time = 10.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5nkdi")

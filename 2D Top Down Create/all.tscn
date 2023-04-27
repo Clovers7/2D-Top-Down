@@ -1,16 +1,56 @@
-[gd_scene load_steps=4 format=3 uid="uid://co1wly1csdtmd"]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource type="Script" path="res://all.gd" id="1_m8ajb"]
-[ext_resource type="PackedScene" uid="uid://bmx1amtbxp8eu" path="res://player.tscn" id="1_yrggi"]
-[ext_resource type="PackedScene" uid="uid://c8v16afjn3b40" path="res://enemy.tscn" id="3_8f68p"]
+[ext_resource type="Script" path="res://all.gd" id="1_bihum"]
+[ext_resource type="PackedScene" path="res://player.tscn" id="2_thaad"]
+[ext_resource type="PackedScene" uid="uid://c8v16afjn3b40" path="res://enemy.tscn" id="3_u3yy1"]
+[ext_resource type="Texture2D" uid="uid://d0j3ioswyepvb" path="res://Set1.png" id="4_xm36s"]
+[ext_resource type="Texture2D" uid="uid://iy48k8q78664" path="res://SetFull.png" id="5_p8jlm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cbs2p"]
+texture = ExtResource("4_xm36s")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_767rq"]
+texture = ExtResource("5_p8jlm")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+17:0/0 = 0
+18:0/0 = 0
+19:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_o268t"]
+sources/0 = SubResource("TileSetAtlasSource_cbs2p")
+sources/2 = SubResource("TileSetAtlasSource_767rq")
 
 [node name="All" type="Node"]
-script = ExtResource("1_m8ajb")
+script = ExtResource("1_bihum")
 
-[node name="player" parent="." instance=ExtResource("1_yrggi")]
+[node name="player" parent="." instance=ExtResource("2_thaad")]
 position = Vector2(1200, 64)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="Enemy" parent="." instance=ExtResource("3_8f68p")]
+[node name="Enemy" parent="." instance=ExtResource("3_u3yy1")]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_o268t")
+format = 2
+layer_0/tile_data = PackedInt32Array(65537, 2, 0, 65614, 1245186, 0, 2818126, 131074, 0, 2818049, 196610, 0, 2555982, 458754, 0, 327758, 458754, 0, 2293838, 458754, 0, 589902, 458754, 0, 852046, 458754, 0, 1114190, 458754, 0, 1376334, 458754, 0, 1638478, 458754, 0, 2031694, 458754, 0, 1835086, 458754, 0, 65541, 458754, 0, 65545, 458754, 0, 65549, 458754, 0, 65553, 458754, 0, 65556, 458754, 0, 65557, 458754, 0, 65561, 458754, 0, 65565, 458754, 0, 65569, 458754, 0, 65574, 458754, 0, 65573, 458754, 0, 65578, 458754, 0, 65583, 458754, 0, 65581, 458754, 0, 65588, 458754, 0, 65586, 458754, 0, 65587, 458754, 0, 65589, 458754, 0, 65590, 458754, 0, 65591, 458754, 0, 65592, 458754, 0, 65593, 458754, 0, 65594, 458754, 0, 65595, 458754, 0, 65596, 458754, 0, 65597, 458754, 0, 65598, 458754, 0, 65599, 458754, 0, 65600, 458754, 0, 65601, 458754, 0, 65602, 458754, 0, 65603, 458754, 0, 65604, 458754, 0, 65605, 458754, 0, 65606, 458754, 0, 65607, 458754, 0, 65608, 458754, 0, 65609, 458754, 0, 65610, 458754, 0, 65611, 458754, 0, 327681, 458754, 0, 2621441, 458754, 0, 2555905, 458754, 0, 2490369, 458754, 0, 2424833, 458754, 0, 2359297, 458754, 0, 2293761, 458754, 0, 2228225, 458754, 0, 2162689, 458754, 0, 2097153, 458754, 0, 2031617, 458754, 0, 1966081, 458754, 0, 1900545, 458754, 0, 1835009, 458754, 0, 1769473, 458754, 0, 1703937, 458754, 0, 1638401, 458754, 0, 1572865, 458754, 0, 1507329, 458754, 0, 1441793, 458754, 0, 1376257, 458754, 0, 1310721, 458754, 0, 1245185, 458754, 0, 1179649, 458754, 0, 1114113, 458754, 0, 1048577, 458754, 0, 983041, 458754, 0, 917505, 458754, 0, 851969, 458754, 0, 786433, 458754, 0, 720897, 458754, 0, 655361, 458754, 0, 589825, 458754, 0, 2818053, 458754, 0, 2818057, 458754, 0, 2818061, 458754, 0, 2818065, 458754, 0, 2818069, 458754, 0, 2818073, 458754, 0, 2818077, 458754, 0, 2818081, 458754, 0, 2818085, 458754, 0, 2818089, 458754, 0, 2818093, 458754, 0, 2818097, 458754, 0, 2818101, 458754, 0)

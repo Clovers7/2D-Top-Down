@@ -1,20 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmx1amtbxp8eu"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="Script" path="res://player.gd" id="1_twjxw"]
-[ext_resource type="Texture2D" uid="uid://jtnag3dknpgh" path="res://char1.png" id="2_exmxc"]
+[ext_resource type="Script" path="res://player.gd" id="1_i8yxv"]
+[ext_resource type="Texture2D" uid="uid://jtnag3dknpgh" path="res://char1.png" id="2_jljvb"]
+[ext_resource type="PackedScene" uid="uid://o4iriqj405if" path="res://blink.tscn" id="3_qajfa"]
+[ext_resource type="PackedScene" uid="uid://bf1cn1xiuwxgt" path="res://hit.tscn" id="4_xfidv"]
+[ext_resource type="Script" path="res://hit.gd" id="5_atrhd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ck3x"]
-size = Vector2(43, 43)
+size = Vector2(41.5, 41.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_myjdl"]
+size = Vector2(42, 42)
 
 [node name="player" type="CharacterBody2D"]
-script = ExtResource("1_twjxw")
+script = ExtResource("1_i8yxv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(9.53674e-07, 0)
 scale = Vector2(0.346875, 0.346875)
-texture = ExtResource("2_exmxc")
+texture = ExtResource("2_jljvb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8ck3x")
 
 [node name="Timer" type="Timer" parent="."]
@@ -25,4 +31,17 @@ one_shot = true
 wait_time = 0.7
 one_shot = true
 
+[node name="Blink" parent="." instance=ExtResource("3_qajfa")]
+
+[node name="Hit" parent="." instance=ExtResource("4_xfidv")]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("5_atrhd")
+
+[node name="CollisionShape2D" parent="Hit" index="0"]
+shape = SubResource("RectangleShape2D_myjdl")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Hit" to="." method="_on_hit_area_entered"]
+
+[editable path="Hit"]
