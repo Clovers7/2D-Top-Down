@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8v16afjn3b40"]
+
+[ext_resource type="Texture2D" uid="uid://cblf82qer7dmy" path="res://enemy.png" id="1_37t0c"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_peurk"]
+
+[node name="Enemy" type="Node"]
+script = ExtResource("1_peurk")
+rotate_speed = 20
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(629, 383)
+texture = ExtResource("1_37t0c")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="Rotation" type="Node2D" parent="."]
+position = Vector2(629, 380)
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
